@@ -1,0 +1,93 @@
+:root {
+    --cube-x: 0px;
+    --cube-y: 0px;
+    --cube-z: 0px;
+    --cube-x-angle: 0deg;
+    --cube-y-angle: 0deg;
+    --cube-z-angle: 0deg;
+    --cube-size: 300px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+@keyframes rotationAnimation {
+    from {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+
+    to {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+.cube-wrapper {
+    position: relative;
+    display: inline-block;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform-style: preserve-3d;
+    transform: translateX(var(--cube-x)) translateY(var(--cube-y)) translateZ(var(--cube-z)) rotateX(var(--cube-x-angle)) rotateY(var(--cube-y-angle)) rotateZ(var(--cube-z-angle));
+
+    /*animation: rotationAnimation 10s linear infinite <== animação*/;
+}
+
+.face {
+    position: absolute;
+    display: inline-block;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    opacity: 1;
+    border: 10px solid black;
+    text-align: center;
+    color: white;
+    line-height: var(--cube-size);
+    font-size: 50px;
+    font-family: calibri;
+    box-shadow: 0 0 30px black;
+    backface-visibility: hidden;
+}
+
+.face.front {
+    transform: translateZ(calc(var(--cube-size) / 2.0));
+    background-color: #0066FF;
+}
+
+.face.back {
+    transform: translateZ(calc(-1 * var(--cube-size) / 2.0)) rotateY(180deg);
+    background-color: #FF6600;
+}
+
+.face.left {
+    transform: translateX(calc(-1 * var(--cube-size) / 2.0)) rotateY(-90deg);
+    background-color: #006600;
+}
+
+.face.right {
+    transform: translateX(calc(var(--cube-size) / 2.0)) rotateY(90deg);
+    background-color: #FF66FF;
+}
+
+.face.top {
+    transform: translateY(calc(-1 * var(--cube-size) / 2.0)) rotateX(90deg);
+    background-color: #005555;
+}
+
+.face.bottom {
+    transform: translateY(calc(var(--cube-size) / 2.0)) rotateX(-90deg);
+    background-color: #AAAA00;
+}
