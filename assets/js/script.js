@@ -16,9 +16,6 @@ var keyBindFunctions = {
 };
 var validKeys = Object.keys(keyBindFunctions);
 
-addEventListener('keydown', e => pressedKeys[e.key] = true);
-addEventListener('keyup', e => pressedKeys[e.key] = false);
-
 function updateCube() {
     Object.keys(pressedKeys)
     .filter(key => pressedKeys[key] === true && validKeys.includes(key))
@@ -27,4 +24,10 @@ function updateCube() {
     requestAnimationFrame(updateCube);
 }
 
-updateCube();
+function startCubeControls() {
+    addEventListener('keydown', e => pressedKeys[e.key] = true);
+    addEventListener('keyup', e => pressedKeys[e.key] = false);
+    updateCube();
+}
+
+//startCubeControls();

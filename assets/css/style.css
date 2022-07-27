@@ -43,7 +43,7 @@
     transform-style: preserve-3d;
     transform: translateX(var(--cube-x)) translateY(var(--cube-y)) translateZ(var(--cube-z)) rotateX(var(--cube-x-angle)) rotateY(var(--cube-y-angle)) rotateZ(var(--cube-z-angle));
 
-    /*animation: rotationAnimation 10s linear infinite;*/
+    animation: rotationAnimation 10s linear infinite;
 }
 
 .face {
